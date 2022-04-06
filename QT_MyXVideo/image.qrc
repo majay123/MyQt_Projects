@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/PauseH.png</file>
+        <file>image/PauseN.png</file>
+        <file>image/PauseP.png</file>
+        <file>image/PlayD.png</file>
+        <file>image/PlayH.png</file>
+        <file>image/PlayN.png</file>
+        <file>image/PlayP.png</file>
+    </qresource>
+</RCC>
