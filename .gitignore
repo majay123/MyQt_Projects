@@ -2,3 +2,4 @@ Qt_Mylabel/.vscode/settings.json
 QT_MyXVideo/.vscode/c_cpp_properties.json
 QT_MyXVideo/.vscode/settings.json
 Qt_SerialTool/.vscode/settings.json
+build-*/
