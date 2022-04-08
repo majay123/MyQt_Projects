@@ -4,3 +4,4 @@ QT_MyXVideo/.vscode/settings.json
 Qt_SerialTool/.vscode/settings.json
 build-*/
 build/
+.DS_Store
