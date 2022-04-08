@@ -29,39 +29,67 @@
  * @version      :
  * @Company      : HOPE
  * @Author       : MCD
- * @Date         : 2022-04-06 14:59:00
+ * @Date         : 2022-04-07 11:03:08
  * @LastEditors  : MCD
- * @LastEditTime : 2022-04-07 10:13:13
- * @FilePath     : /MyQt_Projects/QT_MyXVideo/main.cpp
+ * @LastEditTime : 2022-04-07 14:06:35
+ * @FilePath     : /QT_MyXVideo/imagepro.h
  * @Description  :
  *
  * ******************************************
  */
 
-#include "xvideo.h"
-#include "videowidget.h"
-#include "videothread.h"
+#ifndef IMAGEPRO_H
+#define IMAGEPRO_H
 
-#include "opencv2/highgui/highgui.hpp"
-#include <QApplication>
-#include <opencv2/opencv.hpp>
+#include <QObject>
+#include <QThread>
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/imgproc.hpp>
 
-using namespace cv;
-
-int main(int argc, char *argv[])
+class ImagePro : public QObject
 {
-#if 0 // show a pic
-    Mat img = imread("/Users/mcd/Pictures/pap.er/2SfQsGX4Szg.jpg", -1);
-    if (img.empty())
-        return -1;
-    namedWindow("Example", cv::WINDOW_AUTOSIZE);
-    imshow("Example", img);
-    waitKey(0);
-    destroyWindow("Example");
-#else
-    QApplication a(argc, argv);
-    XVideo w;
-    w.show();
-    return a.exec();
-#endif
-}
+    Q_OBJECT
+
+  public:
+    ImagePro();
+
+    // 设置原图， 会清理之前的处理结果
+    void set(cv::Mat mat1, cv::Mat mat2);
+
+    // 获取目标图片
+    cv::Mat Get() { return des; }
+
+    // 设置亮度和对比度
+    void Gain(double bright, double contrast);
+
+    // 旋转对应角度
+    void Rotate90();
+    void Rotate180();
+    void Rotate270();
+
+    // 进行镜像
+    void FlipX();
+    void FlipY();
+    void FlipXY();
+
+    // 图像尺寸
+    void Resize(int width, int height);
+
+    // 图像金字塔
+    void PyDown(int count);
+    void PyUp(int count);
+
+    // 水印
+    void Mark(int x, int y, double a);
+
+  private:
+    // 原图
+    cv::Mat src1, src2;
+
+    // 目标图
+    cv::Mat des;
+};
+
+#endif // !IMAGEPRO_H

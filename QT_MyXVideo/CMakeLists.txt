@@ -15,6 +15,9 @@ set(CMAKE_PREFIX_PATH "/Users/mcd/Qt/6.2.3/macos/lib/cmake")
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 find_package(Qt6 COMPONENTS Core REQUIRED) 
+find_package(Qt6 COMPONENTS OpenGLWidgets REQUIRED)
+find_package(Qt6 COMPONENTS Gui REQUIRED)
+
 
 #添加OPENCV库
 find_package(OpenCV REQUIRED)
@@ -28,6 +31,14 @@ set(PROJECT_SOURCES
         xvideo.cpp
         xvideo.h
         xvideo.ui
+        videowidget.h
+        videowidget.cpp
+        videothread.h
+        videothread.cpp
+        filter.h
+        filter.cpp
+        imagepro.h
+        imagepro.cpp
 )
 
 #add image resource
@@ -58,7 +69,11 @@ endif()
 
 target_link_libraries(QT_MyXVideo PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${OpenCV_LIBS})
 target_link_libraries(QT_MyXVideo PRIVATE Qt6::Core)
+target_link_libraries(QT_MyXVideo PRIVATE Qt6::OpenGLWidgets)
+target_link_libraries(QT_MyXVideo PRIVATE Qt6::Gui)
+
 target_include_directories(QT_MyXVideo PRIVATE "${CMAKE_BINARY_DIR}/QT_MyXVideo_autogen/include/")
+
 #target_link_libraries(QT_MyXVideo  ${OpenCV_LIBS})
 #/usr/local/opt/opencv/lib
 

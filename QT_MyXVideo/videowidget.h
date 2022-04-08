@@ -1,5 +1,5 @@
 /*
- *
+ * 
  * 　　┏┓　　　┏┓+ +
  * 　┏┛┻━━━┛┻┓ + +
  * 　┃　　　　　　　┃ 　
@@ -21,47 +21,47 @@
  * 　　　┗┓┓┏━┳┓┏┛ + + + +
  * 　　　　┃┫┫　┃┫┫
  * 　　　　┗┻┛　┗┻┛+ + + +
- *
- *
- *
+ * 
+ * 
+ * 
  * ************Copyright 2022 MCD************
- *
- * @version      :
+ * 
+ * @version      : 
  * @Company      : HOPE
  * @Author       : MCD
- * @Date         : 2022-04-06 14:59:00
+ * @Date         : 2022-04-07 09:10:30
  * @LastEditors  : MCD
- * @LastEditTime : 2022-04-07 10:13:13
- * @FilePath     : /MyQt_Projects/QT_MyXVideo/main.cpp
- * @Description  :
- *
+ * @LastEditTime : 2022-04-07 10:12:49
+ * @FilePath     : /MyQt_Projects/QT_MyXVideo/videowidget.h
+ * @Description  : 
+ * 
  * ******************************************
  */
 
-#include "xvideo.h"
-#include "videowidget.h"
-#include "videothread.h"
+#ifndef VIDEOWIDGET
+#define VIDEOWIDGET
 
-#include "opencv2/highgui/highgui.hpp"
-#include <QApplication>
-#include <opencv2/opencv.hpp>
+#include <QOpenGLWidget>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+#include <QImage>
+#include <QObject>
 
-using namespace cv;
-
-int main(int argc, char *argv[])
+class VideoWidget : public QOpenGLWidget
 {
-#if 0 // show a pic
-    Mat img = imread("/Users/mcd/Pictures/pap.er/2SfQsGX4Szg.jpg", -1);
-    if (img.empty())
-        return -1;
-    namedWindow("Example", cv::WINDOW_AUTOSIZE);
-    imshow("Example", img);
-    waitKey(0);
-    destroyWindow("Example");
-#else
-    QApplication a(argc, argv);
-    XVideo w;
-    w.show();
-    return a.exec();
-#endif
-}
+    Q_OBJECT
+
+public:
+    VideoWidget(QWidget *p);
+    void paintEvent(QPaintEvent *e);
+    virtual ~VideoWidget();
+
+public slots:
+    void SetImage(cv::Mat mat);
+
+protected:
+    QImage img;
+};
+
+#endif // !VIDEOWIDGET
