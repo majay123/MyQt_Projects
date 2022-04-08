@@ -1,3 +1,43 @@
+/*
+ * 
+ * 　　┏┓　　　┏┓+ +
+ * 　┏┛┻━━━┛┻┓ + +
+ * 　┃　　　　　　　┃ 　
+ * 　┃　　　━　　　┃ ++ + + +
+ *  ████━████ ┃+
+ * 　┃　　　　　　　┃ +
+ * 　┃　　　┻　　　┃
+ * 　┃　　　　　　　┃ + +
+ * 　┗━┓　　　┏━┛
+ * 　　　┃　　　┃　　　　　　　　　　　
+ * 　　　┃　　　┃ + + + +
+ * 　　　┃　　　┃
+ * 　　　┃　　　┃ +  神兽保佑
+ * 　　　┃　　　┃    代码无bug　　
+ * 　　　┃　　　┃　　+　　　　　　　　　
+ * 　　　┃　 　　┗━━━┓ + +
+ * 　　　┃ 　　　　　　　┣┓
+ * 　　　┃ 　　　　　　　┏┛
+ * 　　　┗┓┓┏━┳┓┏┛ + + + +
+ * 　　　　┃┫┫　┃┫┫
+ * 　　　　┗┻┛　┗┻┛+ + + +
+ * 
+ * 
+ * 
+ * ************Copyright 2022 MCD************
+ * 
+ * @version      : 
+ * @Company      : HOPE
+ * @Author       : MCD
+ * @Date         : 2022-04-08 12:39:14
+ * @LastEditors  : MCD
+ * @LastEditTime : 2022-04-08 12:51:18
+ * @FilePath     : /QT_MyXVideo/xvideo.h
+ * @Description  : 
+ * 
+ * ******************************************
+ */
+
 #ifndef XVIDEO_H
 #define XVIDEO_H
 
@@ -24,22 +64,43 @@ public:
     ~XVideo();
     void timerEvent(QTimerEvent *e);
 
-public slots:
+// public slots:
+//     // 打开视频1按钮信号
+//     void Open();
+//     void SlidePress();
+//     void SlideRelease();
+//     // 滑动条拖动
+//     void SetPos(int pos);
+//     // 设置过滤器
+//     void Set();
+//     // 导出视频
+//     void Export();
+
+//     void Play();
+//     void Pause();
+
+//     void Mark();
+private slots:
     // 打开视频1按钮信号
-    void Open();
-    void SlidePress();
-    void SlideRelease();
+    void on_open1_clicked();
+
+    void on_playSlider_sliderPressed();
+    void on_playSlider_sliderReleased();
     // 滑动条拖动
-    void SetPos(int pos);
+    void on_playSlider_valueChanged(int value);
+
+    //播放暂停
+    void on_playButton_clicked();
+    void on_pauseButton_clicked();
+    // 水印
+    void on_exportButton_2_clicked();
+
+    // 导出视频
+    void on_exportButton_clicked();
     // 设置过滤器
-    void Set();
-    // 到处视频
-    void Export();
+    void on_pushButton_clicked();
 
-    void Play();
-    void Pause();
 
-    void Mark();
 private:
     Ui::XVideo *ui;
 };

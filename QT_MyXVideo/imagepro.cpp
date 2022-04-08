@@ -173,6 +173,7 @@ void ImagePro::PyDown(int count)
         return;
 
     for (int i = 0; i < count; i++) {
+        pyrDown(des,des);
     }
 }
 
@@ -182,6 +183,7 @@ void ImagePro::PyUp(int count)
         return;
 
     for (int i = 0; i < count; i++) {
+        pyrUp(des,des);
     }
 }
 

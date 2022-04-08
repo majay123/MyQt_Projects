@@ -171,7 +171,7 @@ QLabel
   <widget class="QPushButton" name="exportButton">
    <property name="geometry">
     <rect>
-     <x>690</x>
+     <x>685</x>
      <y>360</y>
      <width>91</width>
      <height>41</height>
